@@ -3,7 +3,6 @@ import pika
 def on_message_receive(ch, method, properties, body):
     print(f"New Message Received: {body}")
 
-
 connection_parameters = pika.ConnectionParameters('localhost')
 
 connection = pika.BlockingConnection(connection_parameters)
