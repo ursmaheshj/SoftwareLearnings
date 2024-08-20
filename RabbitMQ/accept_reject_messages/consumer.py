@@ -3,7 +3,7 @@ from pika.exchange_type import ExchangeType
 
 def on_message_receive(ch, method, properties, body):
     if method.delivery_tag % 5 == 0 :
-        ch.basic_ack(delivery_tag=method.delivery_tag,requeue=False,multiple=True)
+        ch.basic_nack(delivery_tag=method.delivery_tag,requeue=False,multiple=True)
     print(f"Message Received: {body}")
 
 connection_parameters = pika.ConnectionParameters('localhost')
