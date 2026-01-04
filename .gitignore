@@ -1,0 +1,39 @@
+#####################RabbitMQ######################
+__pycache__/
+*.pyc
+.Python
+logs/
+
+######################Terraform####################
+# Local Terraform directories and files
+.terraform/
+*.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.hcl # Optional: if not using a shared lock mechanism
+
+# Crash log files
+crash.log
+
+# hclfmt files
+.hclfmt.cache
+
+# tfvars files (as a general rule, add specific ones if needed)
+# Be cautious with .tfvars files as they can contain sensitive data.
+# Consider environment variables or a secure vault for sensitive information.
+# *.tfvars
+# *.tfvars.json
+
+# Backup files
+*~
+*.bak
+*.old
+*.sav
+*.tmp
+
+# VS Code specific files
+.vscode/
+
+# Other VCS
+.svn/
+.hg/
