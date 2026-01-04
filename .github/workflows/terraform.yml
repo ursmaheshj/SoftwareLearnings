@@ -33,22 +33,15 @@ jobs:
           terraform_version: '1.5.6'
 
       - name: Navigate to selected infrastructure folder
-        run: cd Terraform/${{ github.event.inputs.infra_folder }}
-
-      - name: Terraform Plan
-        if: ${{ github.event.inputs.operation == 'plan' }}
         run: |
-          terraform init
-          terraform plan
+          cd Terraform/${{ github.event.inputs.infra_folder }}
 
-      - name: Terraform Apply
-        if: ${{ github.event.inputs.operation == 'apply' }}
-        run: |
           terraform init
-          terraform apply -auto-approve
 
-      - name: Terraform Destroy
-        if: ${{ github.event.inputs.operation == 'destroy' }}
-        run: |
-          terraform init
-          terraform destroy -auto-approve
+          if [[ ${{ github.event.inputs.operation == 'apply' }} ]]; then 
+            terraform apply -auto-approve
+          elif [[ ${{ github.event.inputs.operation == 'destroy' }} ]]; then
+            terraform destroy -auto-approve
+          else 
+            terraform plan
+          fi
