@@ -12,7 +12,6 @@ on:
         type: choice
         description: 'Select the Terraform operation to perform'
         options:
-          - init
           - plan
           - apply
           - destroy
@@ -36,22 +35,20 @@ jobs:
       - name: Navigate to selected infrastructure folder
         run: cd Terraform/${{ github.event.inputs.infra_folder }}
 
-      - name: Terraform Init
-        if: ${{ github.event.inputs.operation == 'init' }}
-        run: |
-          terraform init
-
       - name: Terraform Plan
         if: ${{ github.event.inputs.operation == 'plan' }}
         run: |
+          terraform init
           terraform plan
 
       - name: Terraform Apply
         if: ${{ github.event.inputs.operation == 'apply' }}
         run: |
+          terraform init
           terraform apply -auto-approve
 
       - name: Terraform Destroy
         if: ${{ github.event.inputs.operation == 'destroy' }}
         run: |
+          terraform init
           terraform destroy -auto-approve
