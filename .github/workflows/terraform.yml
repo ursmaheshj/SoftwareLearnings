@@ -38,9 +38,9 @@ jobs:
 
           terraform init
 
-          if [[ ${{ github.event.inputs.operation == 'apply' }} ]]; then 
+          if [[ "${{ github.event.inputs.operation }}" == "apply" ]]; then 
             terraform apply -auto-approve
-          elif [[ ${{ github.event.inputs.operation == 'destroy' }} ]]; then
+          elif [[ "${{ github.event.inputs.operation }}" == "destroy" ]]; then
             terraform destroy -auto-approve
           else 
             terraform plan
