@@ -1,5 +1,5 @@
-from flask import Flask,redirect,url_for,render_template,request
-
+from flask import Flask,redirect, \
+    url_for,render_template,request
 
 app = Flask(__name__)
 
@@ -18,6 +18,6 @@ def login():
 def userprofile(name):
     return f"My name is {name}"
 
-
 if __name__=='__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run(debug=False)
