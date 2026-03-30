@@ -1,0 +1,10 @@
+annotated-doc==0.0.4
+annotated-types==0.7.0
+anyio==4.13.0
+fastapi==0.135.2
+idna==3.11
+pydantic==2.12.5
+pydantic_core==2.41.5
+starlette==1.0.0
+typing-inspection==0.4.2
+typing_extensions==4.15.0
