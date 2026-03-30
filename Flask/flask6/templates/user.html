@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Website title
+{% endblock title %}
+
+{% block content %}
+<p>Userprofile</p>
+{% if user %}
+    <p>Welcome! {{user}}</p>
+{% else %}
+    <button><a href="login">go to login</a></button>
+{% endif %}
+
+<form action="#" method="post">
+    <input type="email" name="email" placeholder="Enter email" value="{{email if email}}"/>
+    <input type="submit" value="submit"/>
+</form>
+
+{% endblock content%}
