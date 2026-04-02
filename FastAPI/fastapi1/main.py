@@ -4,20 +4,44 @@ from models import Product
 app = FastAPI()
 
 product = [
-    Product(1,"laptop","acer",13433,2),
-    Product(2,"smartphone","samung",10999,1),
-    Product(3,"desktop","ant",200000,5)
+    Product(id=1,name="laptop",description="acer",price=13433,quantity=2),
+    Product(id=2,name="phone",description="mobile",price=10999,quantity=1),
+    Product(id=3,name="monitor",description="desktop",price=200000,quantity=3),
 ] 
 
 @app.get("/")
 def greet():
-    return "Hi its me"
+    return "Hi its me"    
 
 @app.get("/product")
-def products():
+def get_all_products():
     return product
 
-@app.get("/product/<id:int>")
-def products(id):
-    print("mj",id)
-    return product[id]
+@app.get("/product/{id:int}")
+def get_product(id: int):
+    for p in product:
+        if id == p.id:
+            return p
+    return "Product not found" 
+
+@app.post("/product")
+def add_product(p: Product):
+    product.append(p)
+    return product
+
+@app.put("/product")
+def update_product(id: int, p: Product):
+    for i in range(len(product)):
+        if product[i].id==id:
+            product[i]=p
+            return "product added success"
+    return "product not found"
+
+@app.delete("/product")
+def delete_product(id: int):
+    for i in range(len(product)):
+        if product[i].id==id:
+            del product[i]
+            return "product deleted"
+        
+    return "product not found"
