@@ -1,0 +1,13 @@
+aws_region              = "us-east-1"
+app_name                = "fastapi"
+environment             = "dev"
+container_port          = 8000
+task_cpu                = "256"
+task_memory             = "512"
+desired_task_count      = 1
+min_task_count          = 1
+max_task_count          = 2
+ecr_repository_name     = "fastapi-app"
+image_tag               = "latest2"
+log_retention_days      = 1
+health_check_path       = "/"
