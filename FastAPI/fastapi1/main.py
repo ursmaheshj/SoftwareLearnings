@@ -13,23 +13,23 @@ product = [
 def greet():
     return "Hi its me"    
 
-@app.get("/product")
+@app.get("/product", include_in_schema=False)
 def get_all_products():
     return product
 
-@app.get("/product/{id:int}")
+@app.get("/product/{id:int}", include_in_schema=False)
 def get_product(id: int):
     for p in product:
         if id == p.id:
             return p
     return "Product not found" 
 
-@app.post("/product")
+@app.post("/product", include_in_schema=False)
 def add_product(p: Product):
     product.append(p)
     return product
 
-@app.put("/product")
+@app.put("/product", include_in_schema=False)
 def update_product(id: int, p: Product):
     for i in range(len(product)):
         if product[i].id==id:
@@ -37,7 +37,7 @@ def update_product(id: int, p: Product):
             return "product added success"
     return "product not found"
 
-@app.delete("/product")
+@app.delete("/product", include_in_schema=False)
 def delete_product(id: int):
     for i in range(len(product)):
         if product[i].id==id:

@@ -12,3 +12,16 @@ Database	:postgres
 
 # docker compose
 
+
+# docker build command 
+docker build -t fastapi-app:latest .
+
+- Note: update AWS_ACCOUNT_ID with your aws_registry_id
+# add Tag for AWS ECR
+docker tag fastapi-app:latest AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/fastapi-app:latest
+
+# Login to ECR
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com
+
+# Push to ECR
+docker push AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/fastapi-app:latest
