@@ -10,6 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@google/genai": "^1.49.0"
+    "@google/genai": "^1.49.0",
+    "dotenv": "^17.4.1",
+    "readline-sync": "^1.4.10"
   }
 }
