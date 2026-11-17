@@ -11,7 +11,7 @@ product = [
 
 @app.get("/")
 def greet():
-    return "Hi its me"    
+    return "Hi its me"   
 
 @app.get("/product", include_in_schema=False)
 def get_all_products():
