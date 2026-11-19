@@ -1,5 +1,5 @@
-import streamlit as st
 from langchain_openai import ChatOpenAI
+from langchain_core.messages import SystemMessage,HumanMessage,AIMessage
 
 chat_model = ChatOpenAI(
     base_url="http://localhost:8080/v1",
@@ -8,15 +8,33 @@ chat_model = ChatOpenAI(
     temperature=0.7,
 )
 
-chat_history=[]
+# # ----------------Simple ChatBot without langchain messages
+# chat_history=[]
+# while True:
+#     user_input = input("you:")
+#     chat_history.append(user_input)
 
+#     if user_input.lower() == 'exit':
+#         break
+
+#     result = chat_model.invoke(chat_history)
+#     chat_history.append(result)
+#     print("AI: ",result.content)
+# print(chat_history)
+
+
+# -----------------Chatbot with langchain messages
+chat_history=[
+    SystemMessage(content="You are an ai agent, expert in animals and their food!")
+]
 while True:
     user_input = input("you:")
-    chat_history.append(user_input)
+    chat_history.append(HumanMessage(content=user_input))
 
     if user_input.lower() == 'exit':
         break
 
     result = chat_model.invoke(chat_history)
-    chat_history.append(result)
+    chat_history.append(AIMessage(content=result.content))
     print("AI: ",result.content)
+print(chat_history)
